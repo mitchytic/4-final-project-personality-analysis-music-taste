@@ -22,7 +22,7 @@ const HamburgerMenu = () => {
           </div>
         <ul>
           <li className="menu-item"><Link to="/">Home</Link></li>
-          <li className="menu-item">Settings</li>
+          <li className="menu-item"><Link to="/settings">Settings</Link></li>
           <li className="menu-item">Exit Study</li>
         </ul>
       </div>

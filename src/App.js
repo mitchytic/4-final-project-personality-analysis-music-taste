@@ -5,6 +5,7 @@ import ChangePasswordPage from './routes/ChangePasswordPage';
 import SupportPage from './routes/SupportPage';
 import PrivacyPolicyPage from './routes/PrivacyPolicyPage';
 import TermsAndConditionsPage from './routes/AboutPage';
+import AboutPage from './routes/AboutPage';
 
 
 function App() {

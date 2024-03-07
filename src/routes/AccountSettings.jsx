@@ -2,7 +2,7 @@ import React from 'react';
 import './AccountSettings.css'; 
 import { Link } from 'react-router-dom';
 
-const AccountSettings = ({ onNavigateToTerms }) => {
+const AccountSettings = () => {
 
   return (
     <div className="account-settings">

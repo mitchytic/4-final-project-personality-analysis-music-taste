@@ -8,12 +8,6 @@
     border: 1px solid #007bff; /* Blue border around the content */
 }
 
-.hamburger-menu {
-    width: 30px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
 .menu-icon {
     background: none;
     border: none;
