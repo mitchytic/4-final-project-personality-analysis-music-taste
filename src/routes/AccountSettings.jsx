@@ -1,22 +1,24 @@
 import React from 'react';
 import './AccountSettings.css'; 
 import { Link } from 'react-router-dom';
+import HamburgerMenu from "../components/common/hamburgermenu";
 
 const AccountSettings = () => {
 
   return (
-    <div className="account-settings">
-      <div className="hamburger-menu">
-        <button className="menu-icon">☰</button>
+    <>
+      <HamburgerMenu />
+      <div className="account-settings">
+        <ul className='settings-list'>
+          <li><Link to="/change-password">Change Password</Link></li>
+          <li><Link to="/support">Support</Link></li>
+          <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/tnc">Terms & Conditions</Link></li>
+        </ul>
       </div>
-      <ul className='settings-list'>
-        <li><Link to="/change-password">Change Password</Link></li>
-        <li><Link to="/support"></Link>Support</li>
-        <li><Link to="/privacy-policy"></Link>Privacy Policy</li>
-        <li><Link to="/about"></Link>About</li>
-        <li><Link to="/tnc"></Link>Terms & Conditions</li>
-      </ul>
-    </div>
+    </>
+    
   );
 };
 

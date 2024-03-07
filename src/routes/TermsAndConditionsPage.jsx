@@ -1,6 +1,6 @@
 import React from 'react';
-import HamburgerMenu from './HamburgerMenu';
 import './TermsAndConditionsPage.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const TermsAndConditionsPage = ({ onBackClick }) => {
   return (

@@ -4,7 +4,7 @@ import AccountSettings from './routes/AccountSettings';
 import ChangePasswordPage from './routes/ChangePasswordPage';
 import SupportPage from './routes/SupportPage';
 import PrivacyPolicyPage from './routes/PrivacyPolicyPage';
-import TermsAndConditionsPage from './routes/AboutPage';
+import TermsAndConditionsPage from './routes/TermsAndConditionsPage';
 import AboutPage from './routes/AboutPage';
 
 

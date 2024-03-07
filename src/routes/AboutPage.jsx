@@ -1,13 +1,16 @@
 import React from 'react';
-import './TermsAndConditionsPage.css';
+import './AboutPage.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
 
-const AboutPage = ({ onBackClick }) => {
+const AboutPage = () => {
   return (
-    <div className="terms-conditions-page">
+    <>
       <HamburgerMenu />
-      <p>We are a company that sells things!!!</p>
-    </div>
+      <div className="about-page">
+        <p>We are a company that sells things!!!</p>
+      </div>
+    </>
+    
   );
 };
 

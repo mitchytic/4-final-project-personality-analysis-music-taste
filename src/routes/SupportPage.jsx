@@ -1,21 +1,20 @@
 import React from 'react';
 import './SupportPage.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const SupportPage = () => {
   return (
-    <div className="support-page">
-      <div className="hamburger-menu">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </div>
+    <>
+      <HamburgerMenu />
+      <div className="support-page">
 
-      <div className="support-form">
-        <input type="email" placeholder="MusicHelp@email.com" />
-        <textarea placeholder="Type Question"></textarea>
-        <button type="submit">Submit</button>
+        <div className="support-form">
+          <input type="email" placeholder="MusicHelp@email.com" />
+          <textarea placeholder="Type Question"></textarea>
+          <button type="submit">Submit</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

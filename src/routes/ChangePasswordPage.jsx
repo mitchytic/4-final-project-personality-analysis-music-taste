@@ -1,20 +1,22 @@
 
 import React from 'react';
 import './ChangePasswordPage.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const ChangePasswordPage = () => {
   return (
-    <div className="change-password-page">
-      <div className="hamburger-menu">
-        <button className="menu-icon">☰</button>
-      </div>
+    <>
+      <HamburgerMenu />
+      <div className="change-password-page">
 
-      <div className="change-form">
-        <input type="password" placeholder="Enter Old Password" />
-        <input type="password" placeholder="Enter New Password" />
-        <button type="submit">Submit</button>
+        <div className="change-form">
+          <input type="password" placeholder="Enter Old Password" />
+          <input type="password" placeholder="Enter New Password" />
+          <button type="submit">Submit</button>
+        </div>
       </div>
-    </div>
+    </>
+    
   );
 };
 

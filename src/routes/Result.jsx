@@ -1,5 +1,6 @@
 import React from 'react';
 import './Result.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const ResultPage = () => {
   const songs = [
@@ -12,9 +13,7 @@ const ResultPage = () => {
 
   return (
     <div className="result-page">
-      <div className="hamburger-menu">
-        <button className="menu-icon">☰</button>
-      </div>
+      <HamburgerMenu />
       <div className="logo-section">
         LOGO {/* Replace with a logo */}
       </div>
