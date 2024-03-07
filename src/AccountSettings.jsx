@@ -1,24 +1,25 @@
 import React from 'react';
 import './AccountSettings.css'; 
 
-const AccountSettings = () => {
+const AccountSettings = ({ onNavigateToTerms }) => {
   const handleChangePassword = () => {
-    console.log("Change password clicked");
+    onNavigateToPassword();
   }
+
   const handleSupport = () => {
-    console.log("Support clicked");
+    onNavigateToSupport();
   };
 
   const handlePrivacyPolicy = () => {
-    console.log("Privacy Policy clicked");
+    onNavigateToPrivacyPolicy();
   };
 
   const handleAbout = () => {
-    console.log("About clicked");
+    onNavigateToAbout();
   };
 
   const handleTermsConditions = () => {
-    console.log("Terms & Conditions clicked");
+    onNavigateToTerms();
   };
 
   return (
