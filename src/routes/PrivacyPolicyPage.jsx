@@ -1,14 +1,12 @@
 
 import React from 'react';
 import './PrivacyPolicyPage.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const PrivacyPolicyPage = () => {
   return (
     <div className="privacy-policy-page">
-      <div className="hamburger-menu">
-        <button className="menu-icon">☰</button>
-      </div>
-
+      <HamburgerMenu />
       <div className="privacy-content">
         <h1>Privacy Policy</h1>
         {/* The actual content of the privacy policy should be inserted here */}
