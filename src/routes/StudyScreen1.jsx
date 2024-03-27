@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './StudyScreen1.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const StudyScreen1 = () => {
   const [selectedRating, setSelectedRating] = useState(null);
@@ -9,17 +10,12 @@ const StudyScreen1 = () => {
   };
 
   const handleSubmit = () => {
-    // Here you would handle the form submission to your backend server
     console.log(`Rating submitted: ${selectedRating}`);
   };
 
   return (
     <div className="study-screen">
-      <div className="hamburger-menu">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </div>
+      <HamburgerMenu />
       <button className="play-song">Play song</button>
       <div className="rate-song">Rate song [1-7]</div>
       <div className="ratings">

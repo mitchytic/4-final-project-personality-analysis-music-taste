@@ -6,6 +6,9 @@ import SupportPage from './routes/SupportPage';
 import PrivacyPolicyPage from './routes/PrivacyPolicyPage';
 import TermsAndConditionsPage from './routes/TermsAndConditionsPage';
 import AboutPage from './routes/AboutPage';
+import Result from './routes/Result';
+import StudyScreen1 from './routes/StudyScreen1';
+import StudyScreen2 from './routes/StudyScreen2';
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/tnc" element={<TermsAndConditionsPage />} />
+            <Route path="/result" element={<Result />} />
+            <Route path="/sc1" element={<StudyScreen1 />} />
+            <Route path="/sc2" element={<StudyScreen2 />} />
           </Routes>
         </Router>
     )
