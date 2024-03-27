@@ -2,8 +2,15 @@
 import React from 'react';
 import './PrivacyPolicyPage.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import { useNavigate } from 'react-router-dom'; 
 
 const PrivacyPolicyPage = () => {
+  const navigate = useNavigate(); 
+
+  const goBackToAccountSettings = () => {
+    navigate('/settings');  
+  };
+
   return (
     <div className="privacy-policy-page">
       <HamburgerMenu />
@@ -15,7 +22,9 @@ const PrivacyPolicyPage = () => {
         </p>
       </div>
 
-      <button className="back-button">Back</button>
+      <button className="back-button" onClick={goBackToAccountSettings}>
+        Back
+      </button>
     </div>
   );
 };

@@ -1,11 +1,13 @@
-
 .privacy-policy-page {
     width: 100%;
-    max-width: 320px;
+    max-width: 640px; 
     margin: 0 auto;
     padding-top: 20px;
+    padding-bottom: 20px;
     position: relative;
-    border: 1px solid #007bff; /* Blue border around the content */
+    background: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px; 
 }
 
 .menu-icon {
@@ -13,24 +15,45 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    margin-right: 20px; 
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 .privacy-content h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333; 
+    font-size: 1.5em; 
 }
 
 .privacy-content {
-    height: 80%; /* Placeholder height */
-    overflow-y: auto; /* Enable scrolling for the content */
+    padding: 20px;
+    overflow-y: auto;
+    line-height: 1.6; 
+    font-size: 1rem; 
+}
+
+.privacy-content p {
+    margin-bottom: 1em; 
 }
 
 .back-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px; /* Adjusted for spacing from the bottom content */
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
     border: none;
-    background-color: #efefef;
+    border-radius: 4px;
+    background-color: #007bff; 
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: auto; 
+}
+
+.back-button:hover {
+    background-color: #0056b3; 
+    text-decoration: none; 
 }
