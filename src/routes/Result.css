@@ -4,12 +4,17 @@
   align-items: center;
   padding: 20px;
 }
+.result-page .hamburger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100; 
+}
 
 .logo-section {
-  /* Replace with your logo styles */
   width: 80%;
-  height: 150px; /* Adjust as needed */
-  background-color: #ddd; /* Placeholder color */
+  height: 150px; 
+  background-color: #ddd; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +37,8 @@
 }
 
 .song-item {
-  background-color: #f8f8f8; /* Light grey background */
-  border: 1px solid #e1e1e1; /* Light grey border */
+  background-color: #f8f8f8; 
+  border: 1px solid #e1e1e1; 
   padding: 10px;
   margin-bottom: 10px;
   display: flex;
@@ -43,11 +48,11 @@
 
 .song-item a {
   text-decoration: none;
-  color: #1db954; /* Spotify green */
+  color: #1db954; 
   font-weight: bold;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .song-item {
     flex-direction: column;

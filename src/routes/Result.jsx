@@ -13,7 +13,7 @@ const ResultPage = () => {
 
   return (
     <div className="result-page">
-      <HamburgerMenu />
+      <HamburgerMenu className="hamburger-menu" />
       <div className="logo-section">
         LOGO {/* Replace with a logo */}
       </div>

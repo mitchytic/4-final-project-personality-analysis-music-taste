@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './StudyScreen2.css';
+import HamburgerMenu from '../components/common/hamburgermenu';
 
 const emotions = [
   'Joy', 'Nostalgia', 'Groove', 'Awe', 'Sadness',
@@ -28,11 +29,7 @@ const StudyScreen2 = () => {
 
   return (
     <div className="study-screen-2">
-      <div className="hamburger-menu">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </div>
+      <HamburgerMenu />
       <div className="instructions">Listen to this song and check all emotions evoked</div>
       <button className="play-button">PLAY SONG</button>
       <div className="emotions-list">
