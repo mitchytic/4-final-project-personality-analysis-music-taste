@@ -5,6 +5,10 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 const dataPath = './accounts.json'; // Path to the JSON file
 
+// Serve static files from the React app
+const buildPath = path.join(__dirname, 'src/App.js', 'react-app-folder-name', 'build');
+app.use(express.static(buildPath));
+
 // Utility function to read accounts from the JSON file
 function readAccounts() {
   return new Promise((resolve, reject) => {
@@ -67,6 +71,11 @@ app.post('/check-user', async (req, res) => {
   const accounts = await readAccounts();
   const user = accounts.find(account => account.username === username && account.password === password);
   res.send({ exists: !!user });
+});
+
+//Catchall function that gets requests that don't fit above, don't move from bottom
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 app.listen(3000, () => {

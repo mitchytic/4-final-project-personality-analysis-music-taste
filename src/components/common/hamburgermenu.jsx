@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext.jsx';
 import './HamburgerMenu.css';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const { isLoggedIn, user, logout } = useAuth();
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <>
@@ -16,15 +16,30 @@ const HamburgerMenu = () => {
         <div className="line"></div>
       </div>
       <div className={`sidebar ${isOpen ? 'show' : ''}`}>
-          <div className="sidebar-header">
-            <div className="user-photo">User Photo</div>
-            <div className="user-name">John Smith</div>
-          </div>
         <ul>
           <li className="menu-item"><Link to="/">Home</Link></li>
-          <li className="menu-item"><Link to="/settings">Settings</Link></li>
-          <li className="menu-item">Exit Study</li>
         </ul>
+        {isLoggedIn && user ? (
+          <>
+            <div className="sidebar-header">
+              <div className="user-photo">User Photo</div>
+              <div className="user-name">user.name</div>
+            </div>
+            <ul>
+              <li className="menu-item"><Link to="/settings">Settings</Link></li>
+              <li className="menu-item">Exit Study</li>
+              <li className="menu-item" onClick={logout}>Logout</li>
+            </ul>
+          </>
+        ) : (
+          <ul>
+            {/* Consider adding a generic header if needed */}
+            <li className="menu-item"><Link to="/login">Login</Link></li>
+            <li className="menu-item"><Link to="/register">Register</Link></li>
+          </ul>
+        )}
+          
+        
       </div>
     </>
   );
