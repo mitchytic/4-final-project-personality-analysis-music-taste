@@ -11,26 +11,29 @@ import StudyScreen1 from './routes/StudyScreen1';
 import StudyScreen2 from './routes/StudyScreen2';
 import CreateAccount from './routes/createaccount';
 import LoginPage from './routes/Login';
+import { AuthProvider } from './contexts/AuthContext';
 
 
 function App() {
     return (
-        <Router>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/settings" element={<AccountSettings />} />
-            <Route path="/change-password" element={<ChangePasswordPage />} />
-            <Route path="/support" element={<SupportPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/tnc" element={<TermsAndConditionsPage />} />
-            <Route path="/result" element={<Result />} />
-            <Route path="/sc1" element={<StudyScreen1 />} />
-            <Route path="/sc2" element={<StudyScreen2 />} />
-            <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/login" element={<LoginPage />} />
-          </Routes>
-        </Router>
+        <AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/settings" element={<AccountSettings />} />
+              <Route path="/change-password" element={<ChangePasswordPage />} />
+              <Route path="/support" element={<SupportPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/tnc" element={<TermsAndConditionsPage />} />
+              <Route path="/result" element={<Result />} />
+              <Route path="/sc1" element={<StudyScreen1 />} />
+              <Route path="/sc2" element={<StudyScreen2 />} />
+              <Route path="/create-account" element={<CreateAccount />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+          </Router>
+        </AuthProvider>
     )
 } 
         
