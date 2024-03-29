@@ -6,7 +6,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 const dataPath = './accounts.json'; // Path to the JSON file
 
 // Serve static files from the React app
-const buildPath = path.join(__dirname, 'src/App.js', 'react-app-folder-name', 'build');
+const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
 // Utility function to read accounts from the JSON file
