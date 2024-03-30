@@ -10,9 +10,6 @@ const StudyScreen1 = () => {
     setSelectedRating(rating);
   };
 
-  const handleSubmit = () => {
-    console.log(`Rating submitted: ${selectedRating}`);
-  };
 
   return (
     <div className="study-screen">
@@ -30,8 +27,9 @@ const StudyScreen1 = () => {
           </button>
         ))}
       </div>
-      <button className="submit" onClick={handleSubmit}><Link to ="sc2">Submit</Link></button>
-      <button className="exit-study"><Link to = "result">Exit Study</Link></button>
+      <Link to="/sc2" className="submit-button">Submit</Link>
+      <Link to="/result" className="exit-button">Exit Study</Link>
+
     </div>
   );
 };
