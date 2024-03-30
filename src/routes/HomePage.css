@@ -1,0 +1,73 @@
+.home-page {
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home-page .hamburger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100; 
+}
+
+.content {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.welcome-message h1,
+.song-ranking h2 {
+  margin-bottom: 20px;
+}
+
+.song-ranking ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.song-ranking ul li {
+  background: #efefef;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer; 
+  transition: background-color 0.3s;
+}
+
+.song-ranking ul li.selected {
+  background-color: #add8e6; 
+}
+
+.next-button,
+.exit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; 
+}
+
+.next-button:hover,
+.exit-button:hover {
+  background-color: #367c39; 
+}
+
+.exit-button {
+  background-color: #f44336; 
+}
+
+.exit-button:hover {
+  background-color: #d32f2f; 
+}

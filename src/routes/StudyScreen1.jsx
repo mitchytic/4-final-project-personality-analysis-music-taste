@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './StudyScreen1.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import { Link } from 'react-router-dom';
 
 const StudyScreen1 = () => {
   const [selectedRating, setSelectedRating] = useState(null);
@@ -29,8 +30,8 @@ const StudyScreen1 = () => {
           </button>
         ))}
       </div>
-      <button className="submit" onClick={handleSubmit}>Submit</button>
-      <button className="exit-study">Exit Study</button>
+      <button className="submit" onClick={handleSubmit}><Link to ="sc2">Submit</Link></button>
+      <button className="exit-study"><Link to = "result">Exit Study</Link></button>
     </div>
   );
 };
