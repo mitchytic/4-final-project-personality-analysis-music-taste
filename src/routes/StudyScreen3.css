@@ -1,0 +1,56 @@
+.study-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.study-screen-3 .hamburger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100; 
+}
+
+.content-block {
+  width: 90%; 
+  margin: 10px 0;
+  padding: 20px;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.content-block.title {
+  font-size: 24px; 
+}
+
+.content-block.image-placeholder {
+  height: 200px; 
+  line-height: 200px; 
+  background-color: #ccc; 
+}
+
+.option-button, .submit-button {
+  background-color: #efefef;
+  border: 2px solid transparent;
+  padding: 10px;
+  margin: 10px;
+  width: calc(50% - 20px);
+  text-align: center;
+  cursor: pointer;
+}
+
+.option-button:hover, .submit-button:hover {
+  background-color: #ddd;
+  border-color: #bbb;
+}
+
+.submit-button {
+  width: 90%; 
+}
+
+.exit-study {
+  color: #000;
+  text-decoration: none;
+  margin-top: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './StudyScreen2.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import { Link } from 'react-router-dom';
 
 const emotions = [
   'Joy', 'Nostalgia', 'Groove', 'Awe', 'Sadness',
@@ -22,11 +23,6 @@ const StudyScreen2 = () => {
     });
   };
 
-  const handleSubmit = () => {
-    // Here you would typically handle the submission, e.g., sending to an API
-    console.log(Array.from(selectedEmotions));
-  };
-
   return (
     <div className="study-screen-2">
       <HamburgerMenu />
@@ -43,8 +39,8 @@ const StudyScreen2 = () => {
           </button>
         ))}
       </div>
-      <button className="submit-button" onClick={handleSubmit}>Submit!</button>
-      <button className="exit-button">Exit Study</button>
+      <Link to="/sc3" className="submit-button">Submit</Link>
+      <Link to="/result" className="exit-button">Exit Study</Link>
     </div>
   );
 };
