@@ -16,7 +16,7 @@ function LoginPage () {
                         <input type="text" id="username" name="username" required></input>
                     </div>
                     <div>
-                        <label for="password">Username:</label>
+                        <label for="password">Password:</label>
                         <input type="text" id="password" name="password" required></input>
                     </div>
                     <div>

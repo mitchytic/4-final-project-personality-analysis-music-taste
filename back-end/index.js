@@ -1,9 +1,18 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const dataPath = './accounts.json'; // Path to the JSON file
+
+// bodyParser middleware
+app.use(bodyParser.json());
+
+// Need to use a service to keep this actually secret
+const SECRET_KEY = 'fake_secret_key_xd'
 
 // Serve static files from the React app
 const buildPath = path.join(__dirname, '..', 'build');
@@ -34,6 +43,21 @@ function writeAccounts(accounts) {
     });
   });
 }
+
+app.post('/submit-login', async (req, res) => { 
+  const { username, password } = req.body;
+  const users = await fs.readJson(USERS_FILE);
+  const user = users.find(user => user.username === username);
+
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.status(401).send('Authentication failed.');
+  }
+
+  const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+
+  res.status(200).json({ token });
+});
+
 
 app.post('/add-user', async (req, res) => {
   const { username, password } = req.body;
@@ -66,14 +90,8 @@ app.delete('/delete-user', async (req, res) => {
   }
 });
 
-app.post('/check-user', async (req, res) => {
-  const { username, password } = req.body;
-  const accounts = await readAccounts();
-  const user = accounts.find(account => account.username === username && account.password === password);
-  res.send({ exists: !!user });
-});
-
 //Catchall function that gets requests that don't fit above, don't move from bottom
+// Maybe could replace with 404 or something?
 app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
