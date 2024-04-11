@@ -6,15 +6,15 @@ import { useNavigate } from 'react-router-dom';
 
 const StudyScreen1 = () => {
   const initialRatings = {
-    cleanSpaces: '',
-    startSocializing: '',
-    enjoyExperimenting: '',
-    solitaryHobbies: '',
-    moodChanges: '',
-    followHeart: '',
-    feelInsecure: '',
-    preferAlone: '',
-    decisionFocus: '',
+    cleanSpaces: '1',
+    startSocializing: '1',
+    enjoyExperimenting: '1',
+    solitaryHobbies: '1',
+    moodChanges: '1',
+    followHeart: '1',
+    feelInsecure: '1',
+    preferAlone: '1',
+    decisionFocus: '1',
   };
   
   const [selectedRating, setSelectedRating] = useState(initialRatings);
