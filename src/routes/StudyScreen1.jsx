@@ -60,13 +60,8 @@ const StudyScreen1 = () => {
   };
 
   const handleSubmit = async () => {
-    // Filter out non-selected ratings before submitting
-    const filteredRatings = Object.fromEntries(
-      Object.entries(selectedRating).filter(([_, value]) => value !== '')
-    );
-
     try {
-      await axios.post('/submit-ratings', filteredRatings);
+      await axios.post('/submit-ratings', selectedRating);
       navigate('/sc2');
     } catch (error) {
       console.error('Error submitting ratings:', error);

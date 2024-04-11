@@ -45,8 +45,8 @@ app.post('/submit-ratings', async (req, res) => {
         const newRating = new Rating(req.body);
         await newRating.save();
         const ratingString = JSON.stringify(req.body);
-        // Compute average score here if needed or in another endpoint
-        fs.appendFile(path.join(__dirname, 'survey-results.jsonl'), ratingString + "\n", (err) => {
+        // Write to file, overwriting any existing data
+        fs.writeFile(path.join(__dirname, 'survey-results.jsonl'), ratingString + "\n", (err) => {
             if (err) {
                 console.error('Failed to write to file', err);
                 return res.status(500).json({ message: 'Error saving survey results to file', error: err.message });
@@ -89,6 +89,7 @@ app.get('/get-music-recommendations', async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch music recommendations', error: error.message });
     }
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
