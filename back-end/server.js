@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
+const qs = require('querystring');
 const Rating = require('./models/RatingModel'); // Adjust the path to your Rating model
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -40,26 +42,51 @@ if (process.env.NODE_ENV === 'production') {
 
 app.post('/submit-ratings', async (req, res) => {
     try {
-      // Save to MongoDB
-      const newRating = new Rating(req.body);
-      await newRating.save();
-
-      // Convert the rating object to a string
-      const ratingString = JSON.stringify(req.body);
-
-      // Append the string to a file, with a newline character for JSON Lines format
-      fs.appendFile(path.join(__dirname, 'survey-results.jsonl'), ratingString + "\n", (err) => {
-        if (err) {
-          console.error('Failed to write to file', err);
-          // Respond with error message if file writing fails
-          return res.status(500).json({ message: 'Error saving survey results to file', error: err.message });
-        }
-        // Respond success after saving to both MongoDB and file
-        res.status(200).json({ message: 'Ratings submitted successfully.' });
-      });
+        const newRating = new Rating(req.body);
+        await newRating.save();
+        const ratingString = JSON.stringify(req.body);
+        // Compute average score here if needed or in another endpoint
+        fs.appendFile(path.join(__dirname, 'survey-results.jsonl'), ratingString + "\n", (err) => {
+            if (err) {
+                console.error('Failed to write to file', err);
+                return res.status(500).json({ message: 'Error saving survey results to file', error: err.message });
+            }
+            res.status(200).json({ message: 'Ratings submitted successfully.' });
+        });
     } catch (error) {
-      console.error('Failed to save rating', error);
-      res.status(500).json({ message: 'Error submitting ratings', error: error.message });
+        console.error('Failed to save rating', error);
+        res.status(500).json({ message: 'Error submitting ratings', error: error.message });
+    }
+});
+
+const songData = JSON.parse(fs.readFileSync(path.join(__dirname, 'songs.json'), 'utf-8'));
+
+app.get('/get-music-recommendations', async (req, res) => {
+    try {
+        const lines = fs.readFileSync(path.join(__dirname, 'survey-results.jsonl'), 'utf-8').trim().split('\n');
+        const totalScores = lines.map(line => {
+            const results = JSON.parse(line);
+            return Object.values(results).reduce((acc, value) => acc + parseInt(value), 0) / Object.keys(results).length;
+        });
+        const overallAverage = totalScores.reduce((acc, cur) => acc + cur, 0) / totalScores.length;
+
+        let genre;
+        // Define the genre based on the overall average score
+        if (overallAverage <= 2) genre = 'hip_hop';
+        else if (overallAverage <= 3) genre = 'indie';
+        else if (overallAverage <= 4) genre = 'rock';
+        else if (overallAverage <= 5) genre = 'punk';
+        else genre = 'pop';
+
+        // Select 5 random songs from the chosen genre
+        const selectedSongs = songData[genre]
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 5);
+
+        res.json(selectedSongs);
+    } catch (error) {
+        console.error('Error fetching music recommendations:', error);
+        res.status(500).json({ message: 'Failed to fetch music recommendations', error: error.message });
     }
 });
 

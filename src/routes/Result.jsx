@@ -1,35 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Result.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
 
 const ResultPage = () => {
-  const songs = [
-    { id: 1, name: 'Song 1', spotifyLink: 'https://open.spotify.com/track/song1' },
-    { id: 2, name: 'Song 2', spotifyLink: 'https://open.spotify.com/track/song2' },
-    { id: 3, name: 'Song 3', spotifyLink: 'https://open.spotify.com/track/song3' },
-    { id: 4, name: 'Song 4', spotifyLink: 'https://open.spotify.com/track/song4' },
-    { id: 5, name: 'Song 5', spotifyLink: 'https://open.spotify.com/track/song5' },
-  ];
+  const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    fetch('/get-music-recommendations')
+      .then(response => response.json())
+      .then(data => {
+        setSongs(data);
+      })
+      .catch(error => console.error('Failed to fetch music recommendations', error));
+  }, []);
 
   return (
     <div className="result-page">
       <HamburgerMenu className="hamburger-menu" />
       <div className="logo-section">
-        LOGO {/* Replace with a logo */}
+        LOGO {/* Replace with your actual logo */}
       </div>
       <div className="thank-you-message">
         Thank you for taking the study!
       </div>
       <div className="song-recommendations">
-        <p>Based on your responses, we were able to build a library of songs we think you'll love!</p>
-        <p>Here it is:</p>
+        <p>Based on your responses, here are some songs we think you'll love:</p>
         <ul>
-          {songs.map(song => (
-            <li key={song.id} className="song-item">
-              <span>{song.name}</span>
-              <a href={song.spotifyLink} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
-            </li>
-          ))}
+        {songs.map((song, index) => (
+          <li key={index} className="song-item">
+            <span>{`${song.artist} - ${song.name}`}</span>
+            <a href={song.spotify_link} target="_blank" rel="noopener noreferrer" style={{ color: 'green' }}>Open in Spotify</a>
+          </li>
+        ))}
         </ul>
       </div>
     </div>
