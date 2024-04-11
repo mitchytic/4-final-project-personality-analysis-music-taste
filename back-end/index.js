@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken');
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const dataPath = './accounts.json'; // Path to the JSON file
-
+app.use('/music', express.static(path.join(__dirname, 'music')));
 // bodyParser middleware
 app.use(bodyParser.json());
 
@@ -96,18 +96,11 @@ app.get('/get-music-recommendations', async (req, res) => {
     }
 });
 
-// An endpoint to get the song's URL
 app.get('/get-song', (req, res) => {
-  // The file name should match the actual MP3 file name in the 'music' directory
   const songFileName = 'JID_MONEY.mp3';
-  
-  // Check if the song exists
-  if (fs.existsSync(path.join(__dirname, 'music', songFileName))) {
-      res.json({ songUrl: `/music/${songFileName}` });
-  } else {
-      res.status(404).json({ message: 'Song not found' });
-  }
+  res.json({ songUrl: `/music/${songFileName}` });
 });
+
 
 // Utility function to write accounts to the JSON file
 function writeAccounts(accounts) {
