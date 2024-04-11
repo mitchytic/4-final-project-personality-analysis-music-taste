@@ -21,7 +21,7 @@ const CreateAccount = () => {
     e.preventDefault();
     try {
       // Sending the form data to the server
-      const response = await axios.post('/create-account', formData);
+      const response = await axios.post('/add-user', formData);
       console.log(response.data);
       // Handle success (e.g., notify the user, redirect, etc.)
     } catch (error) {

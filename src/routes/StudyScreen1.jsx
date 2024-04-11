@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import './StudyScreen1.css';
+import './StudyScreen1.css'; 
 import HamburgerMenu from '../components/common/hamburgermenu';
 import { useNavigate } from 'react-router-dom';
 
 const StudyScreen1 = () => {
-  const [selectedRating, setSelectedRating] = useState(null);
+  const initialRatings = {
+    cleanSpaces: '1',
+    startSocializing: '1',
+    enjoyExperimenting: '1',
+    solitaryHobbies: '1',
+    moodChanges: '1',
+    followHeart: '1',
+    feelInsecure: '1',
+    preferAlone: '1',
+    decisionFocus: '1',
+  };
+  
+  const [selectedRating, setSelectedRating] = useState(initialRatings);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio());
   const navigate = useNavigate();
@@ -15,7 +27,6 @@ const StudyScreen1 = () => {
       try {
         const response = await axios.get('/get-song');
         audioRef.current.src = response.data.songUrl;
-        // Set song name if you're fetching it, e.g., setSongName(response.data.songName);
       } catch (error) {
         console.error('Error fetching song URL:', error);
       }
@@ -23,10 +34,9 @@ const StudyScreen1 = () => {
 
     fetchSongUrl();
 
-    // Cleanup function to stop music when component unmounts
     return () => {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; // Reset song time
+      audioRef.current.currentTime = 0;
     };
   }, []);
 
@@ -42,9 +52,20 @@ const StudyScreen1 = () => {
     audioRef.current.currentTime = e.target.value;
   };
 
-  const handleSubmit = () => {
-    // Here, you'd also handle the submission logic, e.g., saving the rating
-    navigate('/sc2');
+  const handleRatingChange = (question, value) => {
+    setSelectedRating({
+      ...selectedRating,
+      [question]: value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await axios.post('/submit-ratings', selectedRating);
+      navigate('/sc2');
+    } catch (error) {
+      console.error('Error submitting ratings:', error);
+    }
   };
 
   return (
@@ -60,14 +81,29 @@ const StudyScreen1 = () => {
         <label htmlFor="song-progress">Song Progress:</label>
         <input type="range" id="song-progress" min="0" max={audioRef.current.duration || 100} value={audioRef.current.currentTime} onChange={handleTimeChange} className="song-slider"/>
       </div>
-      <div className="rating-system">
-        Rate the song:
-        {[...Array(7)].map((_, index) => (
-          <button key={index} className={`rating-button ${selectedRating === String(index + 1) ? "selected" : ""}`} onClick={() => setSelectedRating(String(index + 1))}>
-            {index + 1}
-          </button>
-        ))}
-      </div>
+      <h2> How do you feel in response to this song? </h2>
+      {[
+         { id: 'cleanSpaces', question: 'Your living and working spaces are clean and organized.' },
+         { id: 'startSocializing', question: 'You will start socializing at first when you face a group of people on the first day.' },
+         { id: 'enjoyExperimenting', question: 'You enjoy experimenting with new and untested approaches.' },
+         { id: 'solitaryHobbies', question: 'You enjoy solitary hobbies or activities more than group ones.' },
+         { id: 'moodChanges', question: 'Your mood can change very quickly.' },
+         { id: 'followHeart', question: 'When facts and feelings conflict, you usually find yourself following your heart.' },
+         { id: 'feelInsecure', question: 'You rarely feel insecure.' },
+         { id: 'preferAlone', question: 'You prefer to be alone.' },
+         { id: 'decisionFocus', question: 'When making decisions, you focus more on how the affected people might feel than on what is most logical or efficient.' },
+      ].map((item) => (
+        <div key={item.id} className="question">
+          <label>{item.question}</label>
+          <select value={selectedRating[item.id]} onChange={(e) => handleRatingChange(item.id, e.target.value)}>
+            {[...Array(5)].map((_, index) => (
+              <option key={index} value={index + 1}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
+        </div>
+      ))}
       <button className="submit-button" onClick={handleSubmit}>Submit</button>
     </div>
   );
