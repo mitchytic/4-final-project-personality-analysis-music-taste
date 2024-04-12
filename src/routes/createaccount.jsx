@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import './createaccount.css';
 
 const CreateAccount = () => {
   const [formData, setFormData] = useState({

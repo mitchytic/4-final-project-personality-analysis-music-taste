@@ -35,7 +35,7 @@ const HamburgerMenu = () => {
           <ul>
             {/* Consider adding a generic header if needed */}
             <li className="menu-item"><Link to="/login">Login</Link></li>
-            <li className="menu-item"><Link to="/register">Register</Link></li>
+            <li className="menu-item"><Link to="/create-account">Register</Link></li>
           </ul>
         )}
           
