@@ -1,19 +1,38 @@
-# Project Repository
+# Personality Analysis based on Music Taste
 
-This repository will be used for team projects.
+## Product Vision Statement
+Personality Analysis based on Music Taste is a mobile-first web application that aims to revolutionize the way individuals understand their own personalities and connect with others. By leveraging advanced algorithms to analyze users' music preferences, we provide personalized insights into their emotional and psychological traits. This tool empowers users to gain deeper self-awareness and enhances social interactions by identifying compatibility based on musical tastes. Our vision is to create a more empathetic and connected world where music becomes a bridge to understanding the unique complexities of every individual.
 
-Several sets of instructions are included in this repository. They should each be treated as separate assignments with their own due dates and sets of requirements.
+## Team Members
 
-1. See the [App Map & Wireframes](instructions-0a-app-map-wireframes.md) and [Prototyping](./instructions-0b-prototyping.md) instructions for the requirements of the initial user experience design of the app.
++ Daniel Ni [Github](https://github.com/mitchytic)
++ Spencer Pak [Github](https://github.com/SpencerWPak)
++ Zhuang Liu [Github](https://github.com/lz0429)
 
-1. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./instructions-0c-project-setup.md)
+### Contributing to our project
 
-1. See the [Sprint Planning instructions](instructions-0d-sprint-planning.md) for the requirements of Sprint Planning for each Sprint.
+For information on how to make a contribution, please proceed to.[CONTRIBUTING.md](./CONTRIBUTING.md)
 
-1. See the [Front-End Development instructions](./instructions-1-front-end.md) for the requirements of the initial Front-End Development.
+## Instructions to Run
 
-1. See the [Back-End Development instructions](./instructions-2-back-end.md) for the requirements of the initial Back-End Development.
+To set up and test this project, you must first obtain the source code, initialize and start the database, compile and run the back-end, compile and run the front-end, and ultimately access the web application through your web browser.
 
-1. See the [Database Integration instructions](./instructions-3-database.md) for the requirements of integrating a database into the back-end.
+### Get the code
 
-1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
+1. Fork this repository
+2. Clone your fork of this repository to your local machine
+3. Navigate into the project directory
+
+The back-end code will integrate with this database.
+
+### Build and launch the back end
+
+1. Navigate into the `back-end` directory
+2. Run `npm install` to install all dependencies listed in the `package.json` file.
+3. Run `npm start` to launch the back-end server
+
+### Build and launch the front end
+
+1. Navigate into the `frontend` directory
+2. Run `npm install` to install all dependencies listed in the `package.json` file.
+3. Run `npm start` to launch the React.js server
