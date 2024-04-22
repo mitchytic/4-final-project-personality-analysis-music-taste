@@ -1,7 +1,7 @@
 const app = require('./index.js');
 const PORT = 27017;
 
-const connectDatabase = require('./ds.js');
+const connectDatabase = require('./db.js');
 
 connectDatabase();
 app.listen(PORT, () => {
