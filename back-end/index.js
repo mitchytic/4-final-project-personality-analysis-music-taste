@@ -22,7 +22,7 @@ const SECRET_KEY = 'fake_secret_key_xd'
 const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
-mongoose.connect('mongodb://localhost:27017/musicdb');
+mongoose.connect('mongodb+srv://liuzhuang0429:MXt3V2szIX9YZef9@cluster0.4yn6cah.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 // Utility function to read accounts from the JSON file
 function readAccounts() {
@@ -171,3 +171,4 @@ app.listen(3001, () => {
   console.log('Server is running on http://localhost:3001');
 });
 
+module.exports = app;
