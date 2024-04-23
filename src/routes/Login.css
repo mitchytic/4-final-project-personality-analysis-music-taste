@@ -1,0 +1,73 @@
+.welcome-message{
+    background: linear-gradient(to right, #f0eeee, #6161c4);
+    padding: 1.5rem;
+    text-align: center;
+}
+  
+.welcome-message h1{
+    font-family: "IM Fell French Canon SC", serif;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 2em;
+    text-align: left;
+    font-size: 27px;
+    color: #0b0b0c;
+}
+  
+.welcome-message p {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 4em;
+    text-align: left;
+    color: #050506;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+}  
+
+.login h2 {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.loginForm input{
+    background-color: #f1f1f1;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+.loginForm button{
+    background-color: #1fdc22;
+    border: none;
+    color: #040404;
+    padding: .5rem;
+    font-size: 20px;
+}
+
+.register{
+    text-align: center;
+}
+
+.register a {
+    text-decoration: none;
+    text-decoration: none;
+    font-size: xx-small;
+    font-family: "Inter", sans-serif;
+    color: #919191;
+    font-size: 20px;
+}
+
