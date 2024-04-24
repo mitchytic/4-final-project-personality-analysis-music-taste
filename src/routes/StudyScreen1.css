@@ -1,71 +1,72 @@
+/* StudyScreen1.css */
 .study-screen {
+  background-color: #f4f4f8; 
+  color: #333;
+  font-family: 'Arial', sans-serif; 
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 320px;
-  margin: auto;
-  padding-top: 20px;
+  height: 100vh;
+  overflow-y: auto; 
 }
 
-.study-screen .hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100; 
+h2 {
+  color: #444; 
+  margin-bottom: 20px; 
 }
 
-.line {
-  width: 100%;
-  height: 3px;
-  background-color: #333;
-}
-
-.play-song,
-.rating-button,
-.submit,
-.exit-study {
-  background-color: #efefef;
+.control-button, .submit-button {
+  background-color: #4071f4;
+  color: white;
   border: none;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
   margin: 10px 0;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
+  cursor: pointer; 
 }
 
-.selected {
-  background-color: #ddd;
+.control-button:hover, .submit-button:hover {
+  background-color: #305fcf; 
 }
 
-.ratings {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.rate-song {
+.volume-slider, .song-slider {
+  width: 90%; 
   margin: 10px 0;
-  text-align: center;
 }
 
-.exit-study {
-  background-color: #ccc;
+.question {
+  text-align: left; 
+  width: 100%; 
+  margin-bottom: 20px; 
 }
 
-.link-button {
-  background-color: #efefef;
-  border: none;
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  text-decoration: none; 
-  color: #333; 
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%; 
+}
+
+label {
   display: block; 
-  border-radius: 4px; 
+  margin-bottom: 5px; 
 }
 
-.link-button:hover {
-  background-color: #ddd;
+.submit-button {
+  background-color: #4CAF50; 
+  color: black; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  margin: 10px 0; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
 }
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+

@@ -1,51 +1,82 @@
-.study-screen-2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 320px;
-  margin: auto;
-  padding-top: 20px;
-}
-
-.study-screen-2 .hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100; 
-}
-
-.line {
-  width: 100%;
-  height: 3px;
-  background-color: #333;
-}
-
-.play-button,
-.emotion-button,
-.submit-button,
-.exit-button {
-  background-color: #efefef;
-  border: none;
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
+/* StudyScreen2.css */
+.welcome-message{
+  background: linear-gradient(to right, #f0eeee, #6161c4);
+  padding: 1.5rem;
   text-align: center;
-  cursor: pointer;
+}
+
+.welcome-message h1{
+  font-family: "Sabon", serif;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 2em;
+  text-align: left;
+  font-size: 27px;
+  color: #0b0b0c;
+}
+
+.welcome-message p {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  margin: 0;
+  margin-left: 4em;
+  text-align: left;
+  color: #050506;
 }
 
 .instructions {
-  text-align: center;
+  font-family: 'Cormorant Infant', serif;
   margin-bottom: 20px;
+  text-align: center;
+  color: #030304; /* Consistent color for headings */
+  font-size: 30px;
+}
+
+.play-button {
+  background-color: #4071f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px; 
+  position: absolute; 
+  left: 50%;         
+  transform: translateX(-50%); 
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .emotions-list {
-  width: 100%;
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+  gap: 10px; 
+  width: 100%; 
+  max-width: 600px; 
+  margin-bottom: 20px; 
 }
 
-.selected {
-  background-color: #ddd;
+.emotion-button {
+  background-color: #b7e4c7;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.exit-button {
-  background-color: #ccc;
+.submit-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  position: absolute; 
+  left: 50%;         
+  transform: translateX(-50%); 
+  bottom: 50px;  
+}
+
+.submit-button {
+  background-color: #4CAF50;
 }

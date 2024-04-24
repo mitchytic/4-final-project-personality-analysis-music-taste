@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Result.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import Footer from '../components/common/Footer'; 
 
 const ResultPage = () => {
   const [songs, setSongs] = useState([]);
@@ -17,8 +18,11 @@ const ResultPage = () => {
 
   return (
     <div className="result-page">
-      <HamburgerMenu className="hamburger-menu" />
-      <div className="logo-section">LOGO</div>
+      <HamburgerMenu />
+        <div className="welcome-message">
+          <h1>Welcome to The Music Study</h1>
+          <p>We want to get an idea of your music taste!</p>
+        </div>
       <div className="thank-you-message">Thank you for taking the study!</div>
       <div className="song-recommendations">
         <p>Based on your responses, here are some songs we think you'll love:</p>
@@ -31,6 +35,7 @@ const ResultPage = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </div>
   );
 };

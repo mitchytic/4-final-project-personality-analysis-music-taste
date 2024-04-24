@@ -1,27 +1,33 @@
-.result-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-.result-page .hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100; 
+.welcome-message{
+  background: linear-gradient(to right, #f0eeee, #6161c4);
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.logo-section {
-  width: 80%;
-  height: 150px; 
-  background-color: #ddd; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+.welcome-message h1{
+  font-family: "IM Fell French Canon SC", serif;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 2em;
+  text-align: left;
+  font-size: 27px;
+  color: #0b0b0c;
+}
+
+.welcome-message p {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 300;
+  margin: 0;
+  margin-left: 4em;
+  text-align: left;
+  color: #050506;
 }
 
 .thank-you-message {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 25px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -31,14 +37,23 @@
   text-align: center;
 }
 
+.song-recommendations p {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 .song-recommendations ul {
   list-style: none;
   padding: 0;
 }
 
 .song-item {
-  background-color: #f8f8f8; 
+  background-color: #ebd7eb; 
   border: 1px solid #e1e1e1; 
+  width: 50%;
   padding: 10px;
   margin-bottom: 10px;
   display: flex;
@@ -48,7 +63,7 @@
 
 .song-item a {
   text-decoration: none;
-  color: #1db954; 
+  color: #0c8f22; 
   font-weight: bold;
 }
 

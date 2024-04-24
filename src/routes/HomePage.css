@@ -1,73 +1,66 @@
-.home-page {
-  font-family: 'Arial', sans-serif;
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.home-page .hamburger-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100; 
-}
-
-.content {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
+.welcome-message{
+  background: linear-gradient(to right, #f0eeee, #6161c4);
+  padding: 1.5rem;
   text-align: center;
 }
 
-.welcome-message h1,
+.welcome-message h1{
+  font-family: "Sabon", serif;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 2em;
+  text-align: left;
+  font-size: 27px;
+  color: #0b0b0c;
+}
+
+.welcome-message p {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  margin: 0;
+  margin-left: 4em;
+  text-align: left;
+  color: #050506;
+}
+
 .song-ranking h2 {
+  font-family: 'Cormorant Infant', serif;
   margin-bottom: 20px;
+  text-align: center;
+  color: #030304; /* Consistent color for headings */
 }
 
 .song-ranking ul {
   list-style: none;
-  padding: 0;
+  padding: 1.5rem;
   margin-bottom: 20px;
 }
 
 .song-ranking ul li {
-  background: #efefef;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer; 
-  transition: background-color 0.3s;
+  background: rgb(127, 203, 182); /* Light background for list items */
+  margin-bottom: 5px; /* Space between items */
+  padding: 20px; /* More padding for touch friendliness */
+   /* Rounded corners for list items */
+  transition: background-color 0.3s; /* Smooth background color transition on hover */
 }
 
 .song-ranking ul li.selected {
-  background-color: #add8e6; 
+  background-color: #f4f3f6; 
 }
 
-.next-button,
-.exit-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s; 
+.homeList {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Inria Serif", serif;
+  font-weight: 700;
+  font-size: 20px;
+  font-style: normal;
 }
 
-.next-button:hover,
-.exit-button:hover {
-  background-color: #367c39; 
+.homeList a{
+  text-decoration: none;
+  text-decoration: none;
+  color: rgb(205, 27, 60);
 }
 
-.exit-button {
-  background-color: #f44336; 
-}
-
-.exit-button:hover {
-  background-color: #d32f2f; 
-}

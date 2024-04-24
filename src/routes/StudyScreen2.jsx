@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './StudyScreen2.css';
 import HamburgerMenu from '../components/common/hamburgermenu';
+import Footer from '../components/common/Footer'; 
 import { Link } from 'react-router-dom';
 
 const emotions = [
@@ -26,6 +27,11 @@ const StudyScreen2 = () => {
   return (
     <div className="study-screen-2">
       <HamburgerMenu />
+      <div className="welcome-message">
+        <h1>Welcome to The Music Study</h1>
+        <p>We want to get an idea of your music taste!</p>
+      </div>
+
       <div className="instructions">Listen to this song and check all emotions evoked</div>
       <button className="play-button">PLAY SONG</button>
       <div className="emotions-list">
@@ -39,8 +45,8 @@ const StudyScreen2 = () => {
           </button>
         ))}
       </div>
-      <Link to="/sc3" className="submit-button">Submit</Link>
-      <Link to="/result" className="exit-button">Exit Study</Link>
+      <Link to="/result" className="submit-button">Submit</Link>
+      <Footer />
     </div>
   );
 };

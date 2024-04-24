@@ -1,0 +1,52 @@
+.welcome-message{
+    background: linear-gradient(to right, #f0eeee, #6161c4);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+.welcome-message h1{
+    font-family: "Sabon", serif;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 2em;
+    text-align: left;
+    font-size: 27px;
+    color: #0b0b0c;
+}
+  
+.welcome-message p {
+    font-family: "Playfair Display", serif;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 4em;
+    text-align: left;
+    color: #050506;
+}
+
+.about-content h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333; 
+    font-size: 30px; 
+}
+
+.about-content {
+    font-family: 'Cormorant Infant', serif;
+    padding: 20px;
+    overflow-y: auto;
+    line-height: 1.6; 
+    font-size: 20px; 
+}
+
+.back-button {
+    background-color: #13eb49;
+    border: none;
+    color: #040404;
+    padding: .5rem;
+    font-size: 30px;
+    width: 200px;       
+    position: absolute; 
+    left: 50%;         
+    transform: translateX(-50%); 
+    bottom: 50px;       
+}

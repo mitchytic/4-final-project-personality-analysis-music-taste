@@ -1,24 +1,52 @@
-.terms-conditions-page {
-  position: relative;
-  font-family: Arial, sans-serif;
+.welcome-message{
+  background: linear-gradient(to right, #f0eeee, #6161c4);
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.welcome-message h1{
+  font-family: "Sabon", serif;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 2em;
+  text-align: left;
+  font-size: 27px;
+  color: #0b0b0c;
 }
 
-.terms-content {
-  height: 80vh;
+.welcome-message p {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  margin: 0;
+  margin-left: 4em;
+  text-align: left;
+  color: #050506;
+}
+
+.terms-conditions-content h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333; 
+  font-size: 30px; 
+}
+
+.terms-conditions-content {
+  font-family: 'Cormorant Infant', serif;
+  padding: 20px;
   overflow-y: auto;
+  line-height: 1.6; 
+  font-size: 20px; 
 }
 
 .back-button {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-
+  background-color: #0ff560;
+  border: none;
+  color: #040404;
+  padding: .5rem;
+  font-size: 30px;
+  width: 200px;       
+  position: absolute; 
+  left: 50%;         
+  transform: translateX(-50%); 
+  bottom: 50px;    
 }
-  
