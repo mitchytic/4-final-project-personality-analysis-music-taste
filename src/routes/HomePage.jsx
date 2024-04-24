@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HomePage.css'; 
 import HamburgerMenu from "../components/common/hamburgermenu";
+import Footer from '../components/common/Footer'; 
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -33,7 +34,7 @@ const HomePage = () => {
           <p>We want to get an idea of your music taste!</p>
         </div>
         <div className="song-ranking">
-          <h2>Please rank the following songs from best to worst</h2>
+          <h2>Please rank the following songs from best to worst(tap it to move)</h2>
           <ul>
             {songs.map((song, index) => (
               <li 
@@ -46,9 +47,12 @@ const HomePage = () => {
             ))}
           </ul>
         </div>
-        <button className="next-button"><Link to = "sc1">NEXT</Link></button>
-        <button className="exit-button"><Link to = "result">Exit Study</Link></button>
+        <div className="homeList"> 
+          <h3><Link to="/sc1">Next</Link></h3>   
+          <h4><Link to="/result">Exit Study</Link></h4>  
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,72 +1,68 @@
 .hamburger-menu {
-  width: 30px;
-  height: 30px;
-  position: relative;
-  justify-content: space-around;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  left: -100%; 
+  top: 0;
+  height: 100%;
+  background: black;
+  transition: left 0.3s; 
+  z-index: 1000; 
 }
 
 .hamburger-menu.open {
-  transform: translateX(255px);
+  left: 0; 
 }
 
-.line {
-  width: 30px;
-  height: 3px;
-  background-color: #000000;
-  margin: 5px 0;
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
-.open .line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.open .line:nth-child(2) {
-  opacity: 0;
-}
-.open .line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Styles for the sidebar */
-.sidebar {
-  width: 255px;
-  height: 100%;
+.menu-button {
   position: fixed;
-  top: 0;
-  left: -255px; /* start off the screen */
-  background-color: #ffffff;
-  z-index: 999;
-  transition: left 0.3s ease-in-out;
+  left: 20px;
+  top: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3em;
+  z-index: 1001; 
+  transition: transform 0.3s; 
+  color: black; 
 }
-.show {
-  left: 0; /* bring onto the screen when 'show' class is added */
+
+.menu-button.open {
+  color: white; 
+  transform: rotate(90deg); 
 }
-.sidebar-header {
-  padding: 20px;
-  border-bottom: 1px solid #cccccc;
+
+.close-menu {
+  color: white;
+  font-size: 2em;
+  background: none;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 30px;
 }
-.user-photo {
-  margin-bottom: 10px;
-  /* Replace with styles for the user photo */
+
+.hamburger-menu h2 {
+  color: white;
+  text-align: center;
+  margin-top: 36px; 
 }
-.user-name {
-  margin-bottom: 10px;
-  font-weight: bold;
+
+.hamburger-menu nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
 }
-.sidebar > ul {
-  list-style-type: none;
+
+.hamburger-menu nav a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  transition: background 0.3s;
 }
-.sidebar > ul > li {
-  padding: 10px 20px;
-  border-bottom: 1px solid #eeeeee;
-  cursor: pointer;
+
+.hamburger-menu nav a:hover,
+.hamburger-menu nav a:focus {
+  background: #333; /* A darker shade for hover state */
 }
-.menu-item:hover {
-  background-color: #f5f5f5;
-}
+
   

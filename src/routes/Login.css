@@ -1,12 +1,11 @@
-
 .welcome-message{
     background: linear-gradient(to right, #f0eeee, #6161c4);
     padding: 1.5rem;
     text-align: center;
-  }
+}
   
 .welcome-message h1{
-    font-family: "Sabon", serif;
+    font-family: "IM Fell French Canon SC", serif;
     font-weight: 400;
     margin: 0;
     margin-left: 2em;
@@ -16,22 +15,22 @@
 }
   
 .welcome-message p {
-    font-family: "Playfair Display", serif;
+    font-family: 'Cormorant Infant', serif;
     font-weight: 300;
     margin: 0;
     margin-left: 4em;
     text-align: left;
     color: #050506;
 }
-  
-.change-form {
+
+.login{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 25px;
-}
+}  
 
-.change-form h2{
+.login h2 {
     font-family: 'Cormorant Infant', serif;
     font-weight: 700;
     font-style: normal;
@@ -56,9 +55,19 @@
     border: none;
     color: #040404;
     padding: .5rem;
-    font-size: 30px;
+    font-size: 20px;
 }
 
-.loginForm input, .loginForm button {
-    margin-bottom: 40px;  /* Adds spacing below each input and button */
+.register{
+    text-align: center;
 }
+
+.register a {
+    text-decoration: none;
+    text-decoration: none;
+    font-size: xx-small;
+    font-family: "Inter", sans-serif;
+    color: #919191;
+    font-size: 20px;
+}
+

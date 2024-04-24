@@ -104,7 +104,7 @@ const StudyScreen1 = () => {
           </select>
         </div>
       ))}
-      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      <button className="submit-button" onClick={handleSubmit}>Next</button>
     </div>
   );
 };
