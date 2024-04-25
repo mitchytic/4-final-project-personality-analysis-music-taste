@@ -1,9 +1,8 @@
-// Change from require to import
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../server.js';
-
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const app = require('../index.js');
 chai.use(chaiHttp);
+const expect = chai.expect;
 
 describe('User Registration and Login', () => {
   describe('/POST register', () => {
@@ -13,7 +12,7 @@ describe('User Registration and Login', () => {
         email: "test@example.com",
         password: "123456"
       };
-      const res = await chai.request(server)
+      const res = await chai.request(app)  // Use 'app' here, not 'server'
                             .post('/api/user/register')
                             .send(user);
       expect(res).to.have.status(200);
@@ -28,7 +27,7 @@ describe('User Registration and Login', () => {
         email: "test@example.com",
         password: "123456"
       };
-      const res = await chai.request(server)
+      const res = await chai.request(app)  // Use 'app' here, not 'server'
                             .post('/api/user/login')
                             .send(credentials);
       expect(res).to.have.status(200);
@@ -41,7 +40,7 @@ describe('User Registration and Login', () => {
         email: "test@example.com",
         password: "wrongpassword"
       };
-      const res = await chai.request(server)
+      const res = await chai.request(app)  // Use 'app' here, not 'server'
                             .post('/api/user/login')
                             .send(wrongCredentials);
       expect(res).to.have.status(401);
@@ -56,7 +55,7 @@ describe('Survey Submission', () => {
       songs: ["song1", "song2", "song3", "song4", "song5"]
     };
     const token = "Bearer valid.token.here";
-    const res = await chai.request(server)
+    const res = await chai.request(app)  // Use 'app' here, not 'server'
                           .post('/api/survey/submit')
                           .set('Authorization', token)
                           .send(surveyData);
@@ -68,7 +67,7 @@ describe('Recommendations', () => {
   it('should return a list of recommended songs for a logged-in user', async () => {
     const userId = "user123";
     const token = "Bearer valid.token.here";
-    const res = await chai.request(server)
+    const res = await chai.request(app)  // Use 'app' here, not 'server'
                           .get(`/api/recommendations/${userId}`)
                           .set('Authorization', token);
     expect(res).to.have.status(200);
@@ -84,7 +83,7 @@ describe('Song Emotion Submission', () => {
       emotion: "Happy"
     };
     const token = "Bearer valid.token.here";
-    const res = await chai.request(server)
+    const res = await chai.request(app)  // Use 'app' here, not 'server'
                           .post('/api/song/emotion')
                           .set('Authorization', token)
                           .send(emotionData);
