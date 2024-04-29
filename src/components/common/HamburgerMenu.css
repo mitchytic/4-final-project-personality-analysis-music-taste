@@ -3,6 +3,7 @@
   left: -100%; 
   top: 0;
   height: 100%;
+  width: 10%;
   background: black;
   transition: left 0.3s; 
   z-index: 1000; 
@@ -26,8 +27,8 @@
 }
 
 .menu-button.open {
-  color: white; 
-  transform: rotate(90deg); 
+  color: white;
+  opacity: 0;
 }
 
 .close-menu {

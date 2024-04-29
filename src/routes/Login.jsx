@@ -5,38 +5,38 @@ import { useNavigate, Link } from 'react-router-dom';
 import './Login.css'; 
 import axios from 'axios';
 
-function LoginPage () {
+function LoginPage() {
     const navigate = useNavigate(); 
-    const [wrongLogin, setWrongLogin] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const form = event.target;
-        const username = form.username.value;
-        const password = form.password.value;
-        console.log(username,password);
-        axios.post('http://localhost:3001/login', {
-            username: username,
-            password: password
-        }).then( res => {
-            console.log(res.data.loggedIn);
-                if(res.data.loggedIn){
-                    navigate('/home')
-                    localStorage.setItem('token', res.data.token)
-                }
-                else{
-                    setWrongLogin(true);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        setError(''); // Clear previous errors
 
-    }
+        if (!username || !password) {
+            setError('Username and password are required.');
+            return;
+        }
+
+        try {
+            const res = await axios.post('http://localhost:3001/submit-login', { username, password });
+            if (res.data.loggedIn) {
+                localStorage.setItem('token', res.data.token); // Consider security implications
+                navigate('/home');
+            } else {
+                setError('Invalid username or password.');
+            }
+        } catch (error) {
+            console.log('Login error:', error);
+            setError('Failed to login. Please try again later.');
+        }
+    };
 
     return (
-    <div className="Login">
-        <HamburgerMenu />
+        <div className="Login">
+            <HamburgerMenu />
             <div className="welcome-message">
                 <h1>Welcome to The Music Study</h1>
                 <p>We want to get an idea of your music taste!</p>
@@ -45,11 +45,23 @@ function LoginPage () {
             <div className='login'>
                 <h2>Login</h2>
                 <form className='loginForm' onSubmit={handleSubmit}>
-                    <input name="username" placeholder='Enter Username' />
+                    <input 
+                        name="username" 
+                        placeholder='Enter Username' 
+                        value={username} 
+                        onChange={e => setUsername(e.target.value)}
+                    />
                     <br/>
-                    <input name="password" placeholder='Enter Password' type ='password'/>
+                    <input 
+                        name="password" 
+                        placeholder='Enter Password' 
+                        type='password'
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)}
+                    />
                     <br/>
                     <button type="submit">Login</button>
+                    {error && <p className="error">{error}</p>}
                 </form>
             </div>
             
@@ -57,9 +69,9 @@ function LoginPage () {
                 <p><Link to="/create-account">Create New Account</Link></p>
             </div>
 
-        <Footer />
-    </div>
-    )
+            <Footer />
+        </div>
+    );
 }
 
 export default LoginPage;
