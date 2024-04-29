@@ -6,8 +6,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 const Rating = require('./models/RatingModel');
+const User = require('./models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const dataPath = './accounts.json'; // Path to the JSON file
@@ -17,6 +19,9 @@ app.use(bodyParser.json());
 
 // Need to use a service to keep this actually secret
 const SECRET_KEY = 'fake_secret_key_xd'
+
+// Enable CORS for all routes and origins, server can't talk to frontend without this
+app.use(cors());
 
 // Serve static files from the React app
 const buildPath = path.join(__dirname, '..', 'build');
@@ -115,30 +120,67 @@ function writeAccounts(accounts) {
   });
 }
 
-app.post('/submit-login', async (req, res) => { 
+app.post('/submit-login', async (req, res) => {
   const { username, password } = req.body;
-  const users = await fs.readJson(USERS_FILE);
-  const user = users.find(user => user.username === username);
 
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(401).send('Authentication failed.');
+  try {
+    // Find the user by username using the User model
+    const user = await User.findOne({ username: username }).exec();
+
+    // Check if user exists and password is correct
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).send('Authentication failed.');
+    }
+
+    // Create a token
+    const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+
+    // Send the token to the client
+    res.status(200).json({ token });
+  } catch (error) {
+    console.error('Database or server error:', error);
+    res.status(500).send('Internal server error.');
   }
-
-  const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-
-  res.status(200).json({ token });
 });
 
-
+//Use database now instead of json file lol
 app.post('/add-user', async (req, res) => {
   const { username, password } = req.body;
-  const accounts = await readAccounts();
-  if (accounts.some(account => account.username === username)) {
-    return res.status(400).send({ message: 'User already exists' });
+
+  try {
+    // Check if the user already exists
+    const existingUser = await User.findOne({ username: username }).exec();
+    if (existingUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
+    // Hash the password before storing it in the database
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Create a new user with the hashed password
+    const newUser = new User({
+      username: username,
+      password: hashedPassword,
+      personality_scores: {
+        joy: 0, 
+        sorrow: 0, 
+        fear: 0, 
+        anger: 0, 
+        surprise: 0, 
+        disgust: 0
+      }
+    });
+
+    // Save the new user to the database
+    await newUser.save();
+
+    // Respond to the client
+    res.status(201).json({ message: 'User added successfully' });
+  } catch (error) {
+    console.error('Error adding user:', error);
+    res.status(500).json({ message: 'Error adding user', error: error.message });
   }
-  accounts.push({ username, password, "Music Taste": 1 }); // Adding with default "Music Taste"
-  await writeAccounts(accounts);
-  res.send({ message: 'User added successfully' });
 });
 
 app.post('/check-user', async (req, res) => {

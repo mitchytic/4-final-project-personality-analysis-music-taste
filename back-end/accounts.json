@@ -1,13 +1,26 @@
 [
-    {
-      "username": "user1",
-      "password": "password1",
-      "Music Taste": 1
-    },
-    {
-      "username": "user2",
-      "password": "password2",
-      "Music Taste": 1
-    }
-  ]
-  
+  {
+    "username": "user1",
+    "password": "password1",
+    "Music Taste": 1
+  },
+  {
+    "username": "user2",
+    "password": "password2",
+    "Music Taste": 1
+  },
+  {
+    "password": "",
+    "Music Taste": 1
+  },
+  {
+    "username": "Daniel",
+    "password": "1234",
+    "Music Taste": 1
+  },
+  {
+    "username": "ilovereactlol",
+    "password": "asdf123",
+    "Music Taste": 1
+  }
+]
