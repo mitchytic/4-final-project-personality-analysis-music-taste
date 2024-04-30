@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import HamburgerMenu from "../components/common/hamburgermenu";
 import Footer from '../components/common/Footer';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ChangePasswordPage = () => {
+  const navigate = useNavigate();
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -49,6 +51,7 @@ const ChangePasswordPage = () => {
       
       if (response.status === 200) {
         alert('Password changed successfully!');
+        navigate('/');
       } else {
         alert('Password change failed.');
       }
