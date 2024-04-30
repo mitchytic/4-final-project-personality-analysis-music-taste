@@ -1,7 +1,8 @@
 import './ChangePasswordPage.css';
 import React, { useState } from 'react';
 import HamburgerMenu from "../components/common/hamburgermenu";
-import Footer from '../components/common/Footer'; ;
+import Footer from '../components/common/Footer';
+import axios from 'axios';
 
 const ChangePasswordPage = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -20,17 +21,29 @@ const ChangePasswordPage = () => {
     setConfirmNewPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (newPassword !== confirmNewPassword) {
       alert('New passwords do not match!');
       return;
     }
-    // Placeholder for password change logic
-    console.log('Old Password:', oldPassword);
-    console.log('New Password:', newPassword);
-    // Typically you would send this data to a backend server for processing
-    alert('Password changed successfully!'); // Placeholder for successful operation
+
+    try {
+      const response = await axios.post('/api/change-password', {
+        oldPassword,
+        newPassword,
+      });
+      
+      if (response.status === 200) {
+        alert('Password changed successfully!');
+      } else {
+        alert('Password change failed.');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+      // Handle errors (e.g., show message to the user)
+      alert('An error occurred, please try again.');
+    }
   };
 
   return (

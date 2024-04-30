@@ -10,7 +10,8 @@ import StudyScreen1 from './routes/StudyScreen1';
 import StudyScreen2 from './routes/StudyScreen2';
 import CreateAccount from './routes/createaccount';
 import LoginPage from './routes/Login';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { useEffect } from 'react';
 
 
 function App() {

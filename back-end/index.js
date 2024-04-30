@@ -208,6 +208,52 @@ app.delete('/delete-user', async (req, res) => {
   }
 });
 
+const authenticateUser = (req, res, next) => { //homebrew auth middleware
+  const authHeader = req.headers.authorization;
+  console.log(authHeader)
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.sendStatus(403); // Forbidden access
+      }
+
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401); // Unauthorized access
+  }
+};
+
+app.post('/api/change-password', authenticateUser, async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const userId = req.user.id; // The user's ID should be available in the request, typically set by authentication middleware
+  
+  try {
+    const user = await User.findById(userId);
+
+    // Verify old password
+    if (!(await bcrypt.compare(oldPassword, user.password))) {
+      return res.status(403).send('Old password is incorrect.');
+    }
+
+    // Hash new password
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    // Update password in the database
+    user.password = hashedPassword;
+    await user.save();
+
+    res.send('Password updated successfully.');
+  } catch (error) {
+    console.error('Error changing password:', error);
+    res.status(500).send('Error changing password.');
+  }
+});
+
 //Catchall function that gets requests that don't fit above, don't move from bottom
 // Maybe could replace with 404 or something?
 app.get('*', (req, res) => {
