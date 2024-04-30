@@ -135,8 +135,13 @@ app.post('/submit-login', async (req, res) => {
     // Create a token
     const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
 
+    const userInfo = {
+      username: user.username,
+      // include other user info as needed
+    };
+
     // Send the token to the client
-    res.status(200).json({ token });
+    res.status(200).json({ token, user: userInfo });
   } catch (error) {
     console.error('Database or server error:', error);
     res.status(500).send('Internal server error.');

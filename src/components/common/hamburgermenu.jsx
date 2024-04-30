@@ -5,13 +5,15 @@ import './HamburgerMenu.css';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false); 
+  const { user, logout } = useAuth();
   
   const toggleMenu = () => {
-      setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   const handleLogout = () => {
-      localStorage.removeItem('token');
+    logout();
+    localStorage.removeItem('token');
   }
   return (
       <>
@@ -21,10 +23,16 @@ const HamburgerMenu = () => {
               <h2>PAMT</h2>
               <nav>
                   <ul>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/settings">Settings</Link></li>
-                    <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
+                    {user ? (
+                      <>
+                        <li><h3>Welcome, {user.username}</h3></li> {/* Display the username */}
+                        <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+                        <li><Link to="/settings" onClick={toggleMenu}>Settings</Link></li>
+                        <li><Link to="/" onClick={() => { handleLogout(); toggleMenu(); }}>Logout</Link></li>
+                      </>
+                    ) : (
+                      <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+                    )}
                   </ul>
               </nav>
           </div>
