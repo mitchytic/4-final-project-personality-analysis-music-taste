@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HamburgerMenu from '../components/common/hamburgermenu';
 import Footer from '../components/common/Footer'; 
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Login.css'; 
 import axios from 'axios';
 
@@ -10,6 +11,7 @@ function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const {login} = useAuth();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,10 +24,11 @@ function LoginPage() {
 
         try {
             const res = await axios.post('http://localhost:3001/submit-login', { username, password });
-            if (res.data.loggedIn) {
-                localStorage.setItem('token', res.data.token); // Consider security implications
-                navigate('/home');
-            } else {
+            if (res.data.token) {
+                login(res.data.user);
+                console.log(res.data);
+                navigate('/');
+            } else {    
                 setError('Invalid username or password.');
             }
         } catch (error) {

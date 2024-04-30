@@ -47,6 +47,12 @@
   margin-top: 36px; 
 }
 
+.hamburger-menu h3 {
+  color: white;
+  text-align: center;
+  margin-top: 24px; 
+}
+
 .hamburger-menu nav ul {
   list-style: none;
   padding: 0;
