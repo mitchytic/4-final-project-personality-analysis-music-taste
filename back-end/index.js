@@ -1,5 +1,6 @@
 const express = require('express');
-require('dotenv').config();
+require('dotenv').config({ path: './pro.env' });;
+console.log(process.env.JWT_SECRET);
 const fs = require('fs');
 const app = express();
 const mongoose = require('mongoose');
@@ -16,9 +17,6 @@ const dataPath = './accounts.json'; // Path to the JSON file
 app.use('/music', express.static(path.join(__dirname, 'music')));
 // bodyParser middleware
 app.use(bodyParser.json());
-
-// Need to use a service to keep this actually secret
-const SECRET_KEY = 'fake_secret_key_xd'
 
 // Enable CORS for all routes and origins, server can't talk to frontend without this
 app.use(cors());
@@ -133,7 +131,7 @@ app.post('/submit-login', async (req, res) => {
     }
 
     // Create a token
-    const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     const userInfo = {
       username: user.username,
@@ -220,6 +218,7 @@ const authenticateUser = (req, res, next) => { //homebrew auth middleware
       }
 
       req.user = user;
+      console.log("ok I made it")
       next();
     });
   } else {
@@ -229,10 +228,9 @@ const authenticateUser = (req, res, next) => { //homebrew auth middleware
 
 app.post('/api/change-password', authenticateUser, async (req, res) => {
   const { oldPassword, newPassword } = req.body;
-  const userId = req.user.id; // The user's ID should be available in the request, typically set by authentication middleware
-  
+  console.log(req.body)
   try {
-    const user = await User.findById(userId);
+    const user = await User.findOne({ username: JSON.parse(req.body.user).username }).exec();
 
     // Verify old password
     if (!(await bcrypt.compare(oldPassword, user.password))) {

@@ -28,10 +28,23 @@ const ChangePasswordPage = () => {
       return;
     }
 
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('No authentication token found. Please log in again.');
+      return;
+    }
+    
+    const user = localStorage.getItem('user');
+
     try {
       const response = await axios.post('/api/change-password', {
         oldPassword,
         newPassword,
+        user
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`  // Include the token in the Authorization header
+        }
       });
       
       if (response.status === 200) {
