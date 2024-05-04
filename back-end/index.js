@@ -13,6 +13,8 @@ const cors = require('cors');
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const dataPath = './accounts.json'; // Path to the JSON file
+const port = process.env.PORT || 3001;
+
 app.use('/music', express.static(path.join(__dirname, 'music')));
 // bodyParser middleware
 app.use(bodyParser.json());
@@ -39,14 +41,6 @@ function readAccounts() {
   });
 }
 
-// This serves the React build files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../front-end/build')));
-
-  app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../front-end/build/index.html'));
-  });
-}
 
 app.post('/submit-ratings', async (req, res) => {
   try {
@@ -257,7 +251,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
 
-const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
