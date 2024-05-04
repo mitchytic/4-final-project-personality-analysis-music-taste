@@ -31,7 +31,10 @@ const HamburgerMenu = () => {
                         <li><Link to="/" onClick={() => { handleLogout(); toggleMenu(); }}>Logout</Link></li>
                       </>
                     ) : (
-                      <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+                      <>
+                        <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+                        <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+                      </>
                     )}
                   </ul>
               </nav>
