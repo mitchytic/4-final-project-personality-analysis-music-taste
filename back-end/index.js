@@ -44,6 +44,10 @@ function readAccounts() {
 // This serves the React build files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../front-end/build')));
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../front-end/build/index.html'));
+  });
 }
 
 app.post('/submit-ratings', async (req, res) => {
