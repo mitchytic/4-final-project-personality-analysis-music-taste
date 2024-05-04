@@ -23,7 +23,7 @@ function LoginPage() {
         }
 
         try {
-            const res = await axios.post('http://localhost:3001/submit-login', { username, password });
+            const res = await axios.post('/submit-login', { username, password });
             if (res.data && res.data.token) {
                 login(res.data.user, res.data.token);
                 localStorage.setItem('token', res.data.token);
