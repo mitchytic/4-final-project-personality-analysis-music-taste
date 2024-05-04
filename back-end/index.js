@@ -1,6 +1,5 @@
 const express = require('express');
-require('dotenv').config({ path: './pro.env' });;
-console.log(process.env.JWT_SECRET);
+require('dotenv').config();;
 const fs = require('fs');
 const app = express();
 const mongoose = require('mongoose');
@@ -258,9 +257,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(3001, () => {
+  console.log('Server is running on http://localhost:3001');
 });
 
 module.exports = app;
